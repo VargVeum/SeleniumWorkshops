@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     protected EventFiringWebDriver driver;
@@ -20,6 +21,7 @@ public class BaseTest {
         options.addArguments("--start-maximized");
         WebDriver chromeDriver = new ChromeDriver(options);
         driver = new EventFiringWebDriver(chromeDriver);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.register(new EventHandler());
 
     }
@@ -38,6 +40,7 @@ public class BaseTest {
             default:
                 webDriver = "geckodriver";
         }
+
         String osName = System.getProperty("os.name");
         if (osName.contains("nix"))
             return webDriver;
