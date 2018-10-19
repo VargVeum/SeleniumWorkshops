@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="KidsFund tests">
+
+    <test name="Login tests">
+        <classes>
+            <class name="com.s_pro.kidsfund.tests.A0001_LoginWithValidDataTest"/>
+            <class name="com.s_pro.kidsfund.tests.A0002_LoginWithEmptyInputs"/>
+        </classes>
+    </test>
+    <!--<test name="Create wish tests">-->
+        <!--<classes>-->
+            <!--<class name="com.s_pro.kidsfund.tests."/>-->
+            <!--<class name="com.s_pro.kidsfund.tests."/>-->
+        <!--</classes>-->
+    <!--</test>-->
+</suite>
