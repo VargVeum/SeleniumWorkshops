@@ -4,15 +4,12 @@ import com.s_pro.kidsfund.pages.ChildHomePage;
 import com.s_pro.kidsfund.pages.LandingPage;
 import com.s_pro.kidsfund.pages.LoginPage;
 import com.s_pro.kidsfund.pages.ParentHomePage;
-import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class A0003_CreateWishTest extends BaseTest {
+public class A0004_DeleteWishTest extends BaseTest {
 
     private final String login = "imartynenko@s-pro.io";
     private final String password = "Qwerty123$";
-    private final By wishTitle = By.cssSelector("p.sc-dNLxif.cIYdyB");
 
     @Test
     public void test() {
@@ -31,28 +28,16 @@ public class A0003_CreateWishTest extends BaseTest {
         loginPage.clickLoginButton();
         // Open user's Home page + verify that Martin Iger's home page successfully open
         parentHomePage.verifyParentNameIsDisplayed();
-        // Choose child for create wish
+        // Choose child for delete previously created wish
         parentHomePage.chooseChildAcc();
-        // Click Add wish button on the child page
-        childHomePage.verifyIsChildPageIsOpen();
-        childHomePage.clickAddWishButton();
-        // Verify that modal is opened
-        String actualEmailString = driver.findElement((wishTitle)).getText();
-        Assert.assertTrue(actualEmailString.equals("Create Wish Fund"), "Wish modal isn't opened");
-        // Fill other fields
-        childHomePage.uploadPhoto();
-        childHomePage.fillWishTitle();
-        childHomePage.fillWishDescription();
-        childHomePage.fillWishCost();
-        childHomePage.clickSubmitButton();
-        // Verify that wish was successfully created
+        // Verify that wish was displayed on the page
         childHomePage.verifyThatWishIsDisplayed();
-        // Logout from Home page
-        parentHomePage.clickMenuButton();
-        parentHomePage.clickLogoutButton();
-        parentHomePage.verifyLogoutTitleIsDisplayed();
-        parentHomePage.clickYesButton();
-
+        childHomePage.chooseWishForDelete();
+        childHomePage.clickNoButton();
+        //childHomePage.chooseWishForDelete();
+        childHomePage.clickYesButton();
+        // Verify that wish was successfully deleted
+        childHomePage.verifyThatWishWasDeleted();
 
     }
 }

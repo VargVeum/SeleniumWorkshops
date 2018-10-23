@@ -2,7 +2,6 @@ package com.s_pro.kidsfund.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import java.io.File;
 
 public class ChildHomePage extends BasePage {
 
@@ -15,7 +14,10 @@ public class ChildHomePage extends BasePage {
     private final By wishModalIsPresent = By.cssSelector("button.sc-ePAWwb.gAOyDQ");
     private final By browseImage = By.cssSelector("input[type='file'].uppy-Dashboard-input");
     private final By createdWish = By.xpath("//*[contains(text(), 'AutoWish')]");
-
+    private final By deleteWishButton = By.xpath("//*[contains(text(), 'Delete')]");
+    private final By verifyDeleteModalTitle = By.xpath("//*[contains(text(), 'Are you sure that you want to delete this wish?')]");
+    private final By cancelDeleteButton = By.xpath("//*[contains(text(), 'Cancel')]");
+    private final By submitDeleteButton = By.xpath("//*[contains(text(), 'Ok')]");
 
     public ChildHomePage(WebDriver driver) {
         super(driver);
@@ -57,5 +59,34 @@ public class ChildHomePage extends BasePage {
     public void verifyThatWishIsDisplayed(){
         driver.findElement(createdWish).isDisplayed();
     }
+
+    public void chooseWishForDelete(){
+        waitForClickable(createdWish);
+        driver.findElement(createdWish).click();
+    }
+
+    public void clickNoButton(){
+        waitForClickable(deleteWishButton);
+        driver.findElement(deleteWishButton).click();
+        driver.findElement(verifyDeleteModalTitle).isDisplayed();
+        driver.findElement(cancelDeleteButton).click();
+
+    }
+
+    public void clickYesButton(){
+        waitForClickable(deleteWishButton);
+        driver.findElement(deleteWishButton).click();
+        driver.findElement(verifyDeleteModalTitle).isDisplayed();
+        driver.findElement(submitDeleteButton).click();
+    }
+
+    public void verifyThatWishWasDeleted(){
+        checkThatElementWasDeleted(createdWish);
+
+    }
+
+
+
+
 
 }

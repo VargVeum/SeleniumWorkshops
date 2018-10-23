@@ -4,15 +4,14 @@
 
     <test name="Login tests">
         <classes>
-            <!--<class name="com.s_pro.kidsfund.tests.A0001_LoginWithValidDataTest"/>
-            <class name="com.s_pro.kidsfund.tests.A0002_LoginWithEmptyInputs"/>-->
-            <class name="com.s_pro.kidsfund.tests.A0003_CreateWishTest"/>
+            <class name="com.s_pro.kidsfund.tests.A0001_LoginWithValidDataTest"/>
+            <class name="com.s_pro.kidsfund.tests.A0002_LoginWithEmptyInputs"/>
         </classes>
     </test>
-    <!--<test name="Create wish tests">-->
-        <!--<classes>-->
-            <!--<class name="com.s_pro.kidsfund.tests."/>-->
-            <!--<class name="com.s_pro.kidsfund.tests."/>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="Create wish tests">
+        <classes>
+            <class name="com.s_pro.kidsfund.tests.A0003_CreateWishTest"/>
+            <class name="com.s_pro.kidsfund.tests.A0004_DeleteWishTest"/>
+        </classes>
+    </test>
 </suite>

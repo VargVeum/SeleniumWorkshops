@@ -33,4 +33,10 @@ public class BasePage {
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_10);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
+
+    public void checkThatElementWasDeleted(By locator){
+        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_10);
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        wait.until(ExpectedConditions.numberOfElementsToBe(locator, 1));
+    }
 }
