@@ -34,6 +34,7 @@ public class A0003_CreateWishTest extends BaseTest {
         // Choose child for create wish
         parentHomePage.chooseChildAcc();
         // Click Add wish button on the child page
+        childHomePage.verifyIsChildPageIsOpen();
         childHomePage.clickAddWishButton();
         // Verify that modal is opened
         String actualEmailString = driver.findElement((wishTitle)).getText();
@@ -45,14 +46,7 @@ public class A0003_CreateWishTest extends BaseTest {
         childHomePage.fillWishCost();
         childHomePage.clickSubmitButton();
         // Verify that wish was successfully created
-
-
-
-
-
-
-
-
+        childHomePage.verifyThatWishIsDisplayed();
         // Logout from Home page
         parentHomePage.clickMenuButton();
         parentHomePage.clickLogoutButton();

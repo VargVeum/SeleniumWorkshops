@@ -6,12 +6,15 @@ import java.io.File;
 
 public class ChildHomePage extends BasePage {
 
-    private final By addWishButton = By.cssSelector("p.sc-kgAjT.cuzzPp");
+    private final By addWishButton = By.xpath("//*[contains(text(), 'Add Wish')]");
     private final By wishTitleInput = By.cssSelector("input#title");
     private final By wishDescriptionInput = By.cssSelector("textarea.sc-kfGgVZ.ldHhPH");
     private final By wishCost = By.cssSelector("input#cost");
     private final By submitButton = By.cssSelector("button.sc-exAgwC.emMNGt");
     private final By uploadWishPhoto = By.cssSelector("img#wishUppy.avatarTrigger");
+    private final By wishModalIsPresent = By.cssSelector("button.sc-ePAWwb.gAOyDQ");
+    private final By browseImage = By.cssSelector("input[type='file'].uppy-Dashboard-input");
+    private final By createdWish = By.xpath("//*[contains(text(), 'AutoWish')]");
 
 
     public ChildHomePage(WebDriver driver) {
@@ -19,8 +22,7 @@ public class ChildHomePage extends BasePage {
     }
 
     public void clickAddWishButton(){
-        waitForVisibility(addWishButton);
-        driver.findElements(addWishButton).get(1).click();
+        driver.findElement(addWishButton).click();
     }
 
     public void fillWishTitle(){
@@ -43,16 +45,17 @@ public class ChildHomePage extends BasePage {
     public void uploadPhoto(){
         waitForClickable(uploadWishPhoto);
         driver.findElement(uploadWishPhoto).click();
-        File file = new File("img/toy1.jpg");
+        driver.findElements(browseImage).get(3)
+                .sendKeys("/home/tester/Desktop/BaseModel(TestNG)/src/test/java/com/s_pro/kidsfund/img/toy1.jpg");
 
     }
 
+    public void verifyIsChildPageIsOpen(){
+        driver.findElement(wishModalIsPresent).isDisplayed();
+    }
 
-
-
-
-
-
-
+    public void verifyThatWishIsDisplayed(){
+        driver.findElement(createdWish).isDisplayed();
+    }
 
 }

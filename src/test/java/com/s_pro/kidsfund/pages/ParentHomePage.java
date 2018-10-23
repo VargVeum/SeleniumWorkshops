@@ -9,18 +9,15 @@ public class ParentHomePage extends BasePage {
     private final By menuHeaderIcon = By.cssSelector("button.sc-yZwTr.YOkDb");
     private final By logoutButton = By.cssSelector("p.sc-kEmuub.jGYqIe");
     private final By yesButton = By.cssSelector("i.icon-icon_check.sc-frDJqD.gZgBMw");
-    private final By chooseChild = By.cssSelector("p.sc-cLmFfZ.droXmj");
+    private final By chooseChild = By.xpath("//*[contains(text(), 'Chucker Wisemeinstein')]");
 
     public ParentHomePage(WebDriver driver) {
         super(driver);
     }
 
     public void chooseChildAcc(){
-        waitForVisibility(chooseChild);
-        driver.findElements(chooseChild).get(0).click();
+        driver.findElement(chooseChild).click();
     }
-
-
 
     public void verifyParentNameIsDisplayed(){
         String actualString = driver.findElement(verifyParentName()).getText();
